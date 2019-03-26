@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>title</title>
+  <script>
+
+    function f1(x, y) {
+      console.log((x + y) + ":=====>" + this.age);
+    }
+
+
+    //复制了一份的时候,把参数传入到了f1函数中,x===>10,y===>20,null就是this,默认就是window
+    //bind方法是复制的意思,参数可以在复制的时候传进去,也可以在复制之后调用的时候传入进去
+    //apply和call是调用的时候改变this指向
+    //bind方法,是赋值一份的时候,改变了this的指向
+
+
+    //    var ff=f1.bind(null);
+    //    ff(10,20);
+
+
+//    function Person() {
+//      this.age = 1000;
+//    }
+//    Person.prototype.eat = function () {
+//      console.log("这个是吃");
+//    };
+//    var per = new Person();
+//
+//    var ff = f1.bind(per, 10, 20);
+//    ff();
+
+
+
+
+    function Person(age) {
+      this.age=age;
+    }
+    Person.prototype.play=function () {
+      console.log(this+"====>"+this.age);
+    };
+
+    function Student(age) {
+      this.age=age;
+    }
+    var per=new Person(10);
+    var stu=new Student(20);
+    //复制了一份
+    var ff=per.play.bind(stu);
+    ff();
+    //bind是用来复制一份
+    //使用的语法:
+    /*
+    * 函数名字.bind(对象,参数1,参数2,...);---->返回值是复制之后的这个函数
+    * 方法名字.bind(对象,参数1,参数2,...);---->返回值是复制之后的这个方法
+    *
+    * */
+
+
+
+  </script>
+</head>
+<body>
+
+
+</body>
+</html>

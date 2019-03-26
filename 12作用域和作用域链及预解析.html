@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>title</title>
+  <script>
+
+    //变量---->局部变量和全局变量,
+    //作用域:就是变量的使用范围
+    //局部作用域和全局作用域
+    //js中没有块级作用域---一对括号中定义的变量,这个变量可以在大括号外面使用
+    //函数中定义的变量是局部变量
+
+//    while(true){
+//      var num=10;
+//      break;
+//    }
+//    console.log(num);
+//
+//    {
+//      var num2=100;
+//    }
+//    console.log(num2);
+//
+//    if(true){
+//      var num3=1000;
+//    }
+//    console.log(num3);
+
+//    function f1() {
+//      //局部变量
+//      var num=10;
+//    }
+//    console.log(num);
+
+
+    作用域链:变量的使用,从里向外,层层的搜索,搜索到了就可以直接使用了
+    层层搜索,搜索到0级作用域的时候,如果还是没有找到这个变量,结果就是报错
+   var num=10; //作用域链 级别:0
+   var num2=20;
+   var str = "abc"
+   function f1() {
+     var num2=20;
+     function f2() {
+       var num3=30;
+       console.log(num);
+     }
+     f2();
+   }
+   f1();
+
+
+    //预解析:就是在浏览器解析代码之前,把变量的声明和函数的声明提前(提升)到该作用域的最上面
+
+    //变量的提升
+    console.log(num);
+    var num=100;
+
+    //函数的声明被提前了
+    f1();
+    function f1() {
+      console.log("这个函数,执行了");
+    }
+
+    var f2;
+    f2=function () {
+      console.log("小杨好帅哦");
+    };
+    f2();
+  </script>
+</head>
+<body>
+
+
+</body>
+</html>
